@@ -11,9 +11,10 @@ type Technology = {
 
 type TechnologyCardProps = {
   onAdd: (technology: Technology) => void
+  isAdded: boolean
 }
 
-function TechnologyCard({ technology,onAdd }: TechnologyCardProps) {
+function TechnologyCard({ technology,onAdd,isAdded }: TechnologyCardProps) {
   return (
     <div className="flex min-h-[220px] flex-col rounded-xl border border-[#E2E8F0] bg-white p-3 shadow-sm">
 
@@ -55,10 +56,12 @@ function TechnologyCard({ technology,onAdd }: TechnologyCardProps) {
 
       {/* Button */}
       <button
+      onClick={() => onAdd(technology)}
+  disabled={isAdded}
         className="mt-3 w-full rounded-md bg-[#0F172A] py-2 text-[10px] font-medium text-white hover:bg-[#334155]"
-        onClick={() => onAdd(technology)}
+        
       >
-        Add to Stack
+        {isAdded ? "✓ Added to Stack" : "Add to Stack"}
       </button>
 
     </div>

@@ -5,6 +5,10 @@ import { useState } from "react"
 function Technologies() {
   const [stack, setStack] = useState([])
   const handleAdd = (technology) => {
+    if (stack.some((item) => item.id === technology.id)) {
+    alert(`${technology.name} is already in your stack!`)
+    return
+  }
   setStack([...stack, technology])
 }
   return (
@@ -34,6 +38,7 @@ function Technologies() {
               key={technology.id}
               technology={technology}
               onAdd={handleAdd}
+               isAdded={stack.some((item) => item.id === technology.id)}
             />
           ))}
         </div>
@@ -56,6 +61,32 @@ function Technologies() {
     </p>
   </div>
 )}
+{stack.map((technology) => (
+  <div
+    key={technology.id}
+    className="flex items-center gap-3 border-b border-[#E2E8F0] py-3"
+  >
+    <img
+      src={technology.icon}
+      alt={technology.name}
+      className="h-8 w-8"
+    />
+
+    <div className="flex-1">
+      <p className="text-sm font-semibold text-[#0F172A]">
+        {technology.name}
+      </p>
+
+      <p className="text-xs text-[#64748B]">
+        {technology.category}
+      </p>
+    </div>
+
+    <button className="text-sm text-[#94A3B8]">
+      ✕
+    </button>
+  </div>
+))}
         </aside>
 
       </div>

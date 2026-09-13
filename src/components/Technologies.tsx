@@ -1,20 +1,26 @@
 import technologies from "../data/technologies.json"
 import TechnologyCard from "./TechnologyCard"
 import { useState } from "react"
+import { toast } from "react-toastify"
 
 function Technologies() {
   const [stack, setStack] = useState([])
   const handleAdd = (technology) => {
-    if (stack.some((item) => item.id === technology.id)) {
-    alert(`${technology.name} is already in your stack!`)
+  if (stack.some((item) => item.id === technology.id)) {
+    toast.warning(`${technology.name} is already in your stack!`)
     return
-  } setStack([...stack, technology])
+  }
+
+  setStack([...stack, technology])
+  toast.success(`${technology.name} added to your stack!`)
 }
-  const handleRemove = (id) => {
-  setStack(stack.filter((technology) => technology.id !== id))
+ const handleRemove = (technology) => {
+  setStack(stack.filter((item) => item.id !== technology.id))
+  toast.info(`${technology.name} removed from your stack.`)
 }
 const handleRemoveAll = () => {
   setStack([])
+  toast.info("All technologies removed from your stack.")
 }
  
   return (
@@ -91,7 +97,7 @@ const handleRemoveAll = () => {
 
 
     <button 
-    onClick={() => handleRemove(technology.id)}
+    onClick={() => handleRemove(technology)}
     className="text-sm text-[#94A3B8]">
       ✕
     </button>

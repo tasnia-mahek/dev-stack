@@ -45,9 +45,12 @@ function Technologies() {
       <div className="mb-8 text-left">
         <h2 className="text-4xl font-black leading-tight tracking-[-0.03em] text-[#0F172A] lg:text-[44px]">
           Explore{" "}
-          <span className="bg-gradient-to-r from-[#D946EF] via-[#EC4899] to-[#8B5CF6] bg-clip-text text-transparent">
-            Technologies
-          </span>
+          <span
+  className="bg-clip-text text-transparent"
+  style={{ backgroundImage: "var(--brand-gradient)" }}
+>
+  Technologies
+</span>
         </h2>
 
         <p className="mt-2 text-[15px] font-normal text-[#64748B]">

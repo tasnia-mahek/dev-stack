@@ -11,7 +11,8 @@ function Hero() {
           <h1 className="text-5xl font-bold leading-tight text-[#0F172A]">
             Build Your Ideal
             <br />
-            <span className="bg-gradient-to-r from-orange-500 via-pink-500 to-violet-500 bg-clip-text text-transparent">
+            <span className="bg-clip-text text-transparent"
+style={{ backgroundImage: "var(--brand-gradient)" }}>
               Development Stack
             </span>
           </h1>
@@ -25,7 +26,8 @@ function Hero() {
           {/* Buttons */}
           <div className="mt-10 flex items-center gap-3">
 
-            <button className="rounded-lg bg-gradient-to-r from-orange-500 via-pink-500 to-violet-500 px-5 py-3 text-sm font-semibold text-white hover:opacity-90">
+            <button className="rounded-lg px-5 py-3 text-sm font-semibold text-white hover:opacity-90"
+style={{ backgroundImage: "var(--brand-gradient)" }}>
               Explore Technologies
             </button>
 

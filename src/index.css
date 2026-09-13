@@ -7,3 +7,6 @@ body {
   background-color: #ffffff;
   color: #0f172a;
 }
+:root {
+  --brand-gradient: linear-gradient(to right, #f97316, #ec4899, #8b5cf6);
+}

@@ -1,25 +1,37 @@
+
 import TechnologyCard from "./TechnologyCard"
 import { useState, useEffect } from "react"
 import { toast } from "react-toastify"
 
+type Technology = {
+  id: number
+  name: string
+  category: string
+  description: string
+  icon: string
+  rating: number
+  difficulty: string
+  badge: string
+}
+
 function Technologies() {
-  const [technologies, setTechnologies] = useState([])
+  const [technologies, setTechnologies] = useState<Technology[]>([])
   const [loading, setLoading] = useState(true)
-  const [stack, setStack] = useState([])
+  const [stack, setStack] = useState<Technology[]>([])
 
   useEffect(() => {
     fetch("/src/data/technologies.json")
       .then((res) => res.json())
       .then((data) => {
-  setTechnologies(data)
+        setTechnologies(data)
 
-  setTimeout(() => {
-    setLoading(false)
-  }, 1000)
-})
+        setTimeout(() => {
+          setLoading(false)
+        }, 1000)
+      })
   }, [])
 
-  const handleAdd = (technology) => {
+  const handleAdd = (technology: Technology) => {
     if (stack.some((item) => item.id === technology.id)) {
       toast.warning(`${technology.name} is already in your stack!`)
       return
@@ -29,7 +41,7 @@ function Technologies() {
     toast.success(`${technology.name} added to your stack!`)
   }
 
-  const handleRemove = (technology) => {
+  const handleRemove = (technology: Technology) => {
     setStack(stack.filter((item) => item.id !== technology.id))
     toast.info(`${technology.name} removed from your stack.`)
   }
@@ -41,16 +53,15 @@ function Technologies() {
 
   return (
     <section className="bg-white px-5 py-16">
-      {/* Heading */}
       <div className="mb-8 text-left">
         <h2 className="text-4xl font-black leading-tight tracking-[-0.03em] text-[#0F172A] lg:text-[44px]">
           Explore{" "}
           <span
-  className="bg-clip-text text-transparent"
-  style={{ backgroundImage: "var(--brand-gradient)" }}
->
-  Technologies
-</span>
+            className="bg-clip-text text-transparent"
+            style={{ backgroundImage: "var(--brand-gradient)" }}
+          >
+            Technologies
+          </span>
         </h2>
 
         <p className="mt-2 text-[15px] font-normal text-[#64748B]">
@@ -58,10 +69,8 @@ function Technologies() {
         </p>
       </div>
 
-      {/* Cards + Your Stack */}
       <div className="grid items-start gap-5 lg:grid-cols-4">
 
-        {/* Technology Cards */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-3 lg:grid-cols-3">
           {loading ? (
             <p className="col-span-full text-center text-slate-500">
@@ -79,7 +88,6 @@ function Technologies() {
           )}
         </div>
 
-        {/* Your Stack */}
         <aside className="rounded-xl border border-[#E2E8F0] bg-white p-4">
           <h3 className="font-semibold text-[#0F172A]">
             Your Stack

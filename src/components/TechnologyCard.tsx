@@ -1,3 +1,4 @@
+
 type Technology = {
   id: number
   name: string
@@ -10,15 +11,19 @@ type Technology = {
 }
 
 type TechnologyCardProps = {
+  technology: Technology
   onAdd: (technology: Technology) => void
   isAdded: boolean
 }
 
-function TechnologyCard({ technology,onAdd,isAdded }: TechnologyCardProps) {
+function TechnologyCard({
+  technology,
+  onAdd,
+  isAdded
+}: TechnologyCardProps) {
   return (
     <div className="flex min-h-[220px] flex-col rounded-xl border border-[#E2E8F0] bg-white p-3 shadow-sm">
 
-      {/* Top */}
       <div className="flex items-start justify-between">
         <img
           src={technology.icon}
@@ -31,17 +36,14 @@ function TechnologyCard({ technology,onAdd,isAdded }: TechnologyCardProps) {
         </span>
       </div>
 
-      {/* Name */}
       <h3 className="mt-3 text-sm font-semibold text-[#0F172A]">
         {technology.name}
       </h3>
 
-      {/* Description */}
       <p className="mt-1 flex-1 text-[10px] leading-4 text-[#64748B]">
         {technology.description}
       </p>
 
-      {/* Info */}
       <div className="mt-3 flex items-center justify-between text-[9px] text-[#64748B]">
         <span className="rounded bg-[#F1F5F9] px-2 py-1">
           {technology.category}
@@ -54,12 +56,10 @@ function TechnologyCard({ technology,onAdd,isAdded }: TechnologyCardProps) {
         </span>
       </div>
 
-      {/* Button */}
       <button
-      onClick={() => onAdd(technology)}
-  disabled={isAdded}
+        onClick={() => onAdd(technology)}
+        disabled={isAdded}
         className="mt-3 w-full rounded-md bg-[#0F172A] py-2 text-[10px] font-medium text-white hover:bg-[#334155]"
-        
       >
         {isAdded ? "✓ Added to Stack" : "Add to Stack"}
       </button>
@@ -69,3 +69,4 @@ function TechnologyCard({ technology,onAdd,isAdded }: TechnologyCardProps) {
 }
 
 export default TechnologyCard
+

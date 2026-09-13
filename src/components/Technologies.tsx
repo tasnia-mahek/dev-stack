@@ -20,7 +20,7 @@ function Technologies() {
   const [stack, setStack] = useState<Technology[]>([])
 
   useEffect(() => {
-    fetch("/src/data/technologies.json")
+    fetch("/technologies.json")
       .then((res) => res.json())
       .then((data) => {
         setTechnologies(data)

@@ -10,10 +10,10 @@ type Technology = {
 }
 
 type TechnologyCardProps = {
-  technology: Technology
+  onAdd: (technology: Technology) => void
 }
 
-function TechnologyCard({ technology }: TechnologyCardProps) {
+function TechnologyCard({ technology,onAdd }: TechnologyCardProps) {
   return (
     <div className="flex min-h-[220px] flex-col rounded-xl border border-[#E2E8F0] bg-white p-3 shadow-sm">
 
@@ -54,7 +54,10 @@ function TechnologyCard({ technology }: TechnologyCardProps) {
       </div>
 
       {/* Button */}
-      <button className="mt-3 w-full rounded-md bg-[#0F172A] py-2 text-[10px] font-medium text-white hover:bg-[#334155]">
+      <button
+        className="mt-3 w-full rounded-md bg-[#0F172A] py-2 text-[10px] font-medium text-white hover:bg-[#334155]"
+        onClick={() => onAdd(technology)}
+      >
         Add to Stack
       </button>
 

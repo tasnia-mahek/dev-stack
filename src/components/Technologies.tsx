@@ -1,8 +1,14 @@
 import technologies from "../data/technologies.json"
 import TechnologyCard from "./TechnologyCard"
+import { useState } from "react"
 
 function Technologies() {
+  const [stack, setStack] = useState([])
+  const handleAdd = (technology) => {
+  setStack([...stack, technology])
+}
   return (
+    
     <section className="bg-white px-5 py-16">
       {/* Heading */}
       <div className="mb-8 text-left">
@@ -27,6 +33,7 @@ function Technologies() {
             <TechnologyCard
               key={technology.id}
               technology={technology}
+              onAdd={handleAdd}
             />
           ))}
         </div>
@@ -36,16 +43,19 @@ function Technologies() {
           <h3 className="font-semibold text-[#0F172A]">
             Your Stack
           </h3>
-
           <p className="mt-1 text-xs text-[#94A3B8]">
-            No technologies selected yet.
-          </p>
+  {stack.length} Technology{stack.length !== 1 ? "ies" : ""} Selected
+</p>
 
-          <div className="mt-5 flex min-h-[120px] items-center justify-center rounded-lg border border-dashed border-[#E2E8F0]">
-            <p className="text-xs text-[#94A3B8]">
-              Your stack is empty.
-            </p>
-          </div>
+          
+
+          {stack.length === 0 && (
+  <div className="mt-5 flex min-h-[120px] items-center justify-center rounded-lg border border-dashed border-[#E2E8F0]">
+    <p className="text-xs text-[#94A3B8]">
+      Your stack is empty.
+    </p>
+  </div>
+)}
         </aside>
 
       </div>

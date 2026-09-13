@@ -35,7 +35,7 @@ const handleRemoveAll = () => {
       </div>
 
       {/* Cards + Your Stack */}
-      <div className="grid gap-5 lg:grid-cols-4">
+      <div className="grid items-start gap-5 lg:grid-cols-4">
 
         {/* Technology Cards */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-3 lg:grid-cols-3">

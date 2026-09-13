@@ -8,9 +8,15 @@ function Technologies() {
     if (stack.some((item) => item.id === technology.id)) {
     alert(`${technology.name} is already in your stack!`)
     return
-  }
-  setStack([...stack, technology])
+  } setStack([...stack, technology])
 }
+  const handleRemove = (id) => {
+  setStack(stack.filter((technology) => technology.id !== id))
+}
+const handleRemoveAll = () => {
+  setStack([])
+}
+ 
   return (
     
     <section className="bg-white px-5 py-16">
@@ -81,12 +87,24 @@ function Technologies() {
         {technology.category}
       </p>
     </div>
+   
 
-    <button className="text-sm text-[#94A3B8]">
+
+    <button 
+    onClick={() => handleRemove(technology.id)}
+    className="text-sm text-[#94A3B8]">
       ✕
     </button>
   </div>
 ))}
+{stack.length > 0 && (
+  <button
+    onClick={handleRemoveAll}
+    className="mt-4 w-full rounded-md border border-[#E2E8F0] py-2 text-xs font-medium text-[#64748B] hover:bg-[#F8FAFC]"
+  >
+    Remove All
+  </button>
+)}
         </aside>
 
       </div>

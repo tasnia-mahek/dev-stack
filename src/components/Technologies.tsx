@@ -100,7 +100,7 @@ const handleRemoveAll = () => {
 {stack.length > 0 && (
   <button
     onClick={handleRemoveAll}
-    className="mt-4 w-full rounded-md border border-[#E2E8F0] py-2 text-xs font-medium text-[#64748B] hover:bg-[#F8FAFC]"
+    className="mt-4 w-full rounded-md border border-red-200 py-2 text-xs font-bold text-red-500 hover:bg-red-50"
   >
     Remove All
   </button>
